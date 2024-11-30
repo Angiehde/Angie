@@ -1,0 +1,24 @@
+import streamlit as st
+import cmath
+
+# Título de la aplicación
+st.title("Calculadora de Ecuaciones Cuadráticas")
+st.write("Resuelve ecuaciones cuadráticas del tipo: ax² + bx + c = 0")
+
+# Entradas del usuario
+a = st.number_input("Introduce el coeficiente a (debe ser diferente de 0):", value=1.0)
+b = st.number_input("Introduce el coeficiente b:", value=0.0)
+c = st.number_input("Introduce el coeficiente c:", value=0.0)
+
+# Comprobación y cálculo
+if a != 0:
+    discriminant = cmath.sqrt(b**2 - 4*a*c)
+    root1 = (-b + discriminant) / (2*a)
+    root2 = (-b - discriminant) / (2*a)
+
+    # Mostrar resultados
+    st.write("### Resultados:")
+    st.write(f"Raíz 1: {root1.real:.2f} + {root1.imag:.2f}j")
+    st.write(f"Raíz 2: {root2.real:.2f} + {root2.imag:.2f}j")
+else:
+    st.write("El coeficiente 'a' no puede ser 0 en una ecuación cuadrática.")
